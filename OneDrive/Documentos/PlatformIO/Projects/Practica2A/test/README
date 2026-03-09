@@ -1,0 +1,66 @@
+# ESP32 Interruptions – Practice 2
+
+## Practice A – GPIO Interrupt
+
+### Objective
+
+The goal of this practice is to understand how **hardware interrupts work on the ESP32** using a push button connected to a GPIO pin.
+
+Each time the button is pressed, an interrupt is triggered which executes an **Interrupt Service Routine (ISR)**. This routine increments a counter and notifies the main program so the result can be printed through the serial monitor.
+
+---
+
+## Hardware
+
+- ESP32
+- Push button
+- Jumper wires
+
+### Pin Configuration
+
+| Component | ESP32 Pin |
+|----------|-----------|
+| Button | GPIO 18 |
+
+The pin is configured as `INPUT_PULLUP`, meaning:
+
+- Default state → **HIGH**
+- When the button is pressed → **LOW**
+
+The interrupt is triggered on the **FALLING edge**.
+
+---
+
+## How It Works
+
+1. A `Button` structure is created to store:
+   - The GPIO pin
+   - The number of button presses
+   - The pressed state
+
+2. An **Interrupt Service Routine (ISR)** is defined.  
+   This function is executed automatically when the interrupt occurs.
+
+3. Each time the button is pressed:
+   - The press counter increases.
+   - The `pressed` flag is activated.
+
+4. In the `loop()` function:
+   - The program checks if the button was pressed.
+   - The number of presses is printed to the serial monitor.
+
+5. After **60 seconds**, the interrupt is disabled using `detachInterrupt()`.
+
+---
+
+6.Serial monitor example:
+
+Button 1 has been pressed 1 times
+Button 1 has been pressed 2 times
+Button 1 has been pressed 3 times
+
+After one minute:
+
+Interrupt Detached!
+
+At this point the button will no longer generate interrupts.
