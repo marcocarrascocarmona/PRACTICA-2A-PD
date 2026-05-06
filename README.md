@@ -81,6 +81,8 @@ void loop() {
     lastMillis = millis();
     detachInterrupt(button1.PIN);
 
+--
+
 Salida esperada:
 
 Button 1 has been pressed 1 times
