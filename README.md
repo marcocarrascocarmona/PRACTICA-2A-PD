@@ -80,7 +80,9 @@ void loop() {
   if (millis() - lastMillis > 60000) {
     lastMillis = millis();
     detachInterrupt(button1.PIN);
-
+    Serial.println("Interrupt Detached!");
+  }
+}
 --
 
 Salida esperada:
