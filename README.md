@@ -84,7 +84,7 @@ void loop() {
   }
 }
 --
-
+```
 Salida esperada:
 
 Button 1 has been pressed 1 times
